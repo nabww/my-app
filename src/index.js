@@ -1,7 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 import "./app.css";
-//import * as ReactDOM from "react-dom/client";
+import * as ReactDOM from "react-dom/client";
 
 //component file
 import TodoContainer from "./components/TodoContainer";
