@@ -6,24 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 class TodoContainer extends React.Component {
   state = {
-    todos: [
-      {
-        id: uuidv4(),
-        title: "Setup development environment",
-        default: false,
-      },
-
-      {
-        id: uuidv4(),
-        title: "Develop website and add content",
-        default: false,
-      },
-      {
-        id: uuidv4(),
-        title: "Deploy to live server",
-        default: false,
-      },
-    ],
+    todos: [],
     editing: false,
   };
 
@@ -83,20 +66,33 @@ class TodoContainer extends React.Component {
     });
   };
 
-  handleUpdatedDone = (event) => {
-    console.log("hello");
+  onKeyPressed = (event) => {
+    if (event.key === "Enter") {
+      this.setState({ editing: false });
+    }
   };
 
-  render() {
-    let viewMode = {};
-    let editMode = {};
+  componentDidMount1 = () => {
+    document.addEventListener(
+      "keydown",
+      (e) => e.code === "Enter" && console.log(this.setUpdate)
+    );
+  };
 
-    if (this.state.editing) {
-      viewMode.display = "none";
-    } else {
-      editMode.display = "none";
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=20")
+      .then((response) => response.json())
+      .then((data) => this.setState({ todos: data }));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.todos !== this.state.todos) {
+      const temp = JSON.stringify(this.state.todos);
+      localStorage.setItem("todos", temp);
     }
+  }
 
+  render() {
     return (
       <div className="=container">
         <div className="inner">
@@ -107,9 +103,9 @@ class TodoContainer extends React.Component {
             editing={this.state.editing}
             handleChangeProps={this.handleChange}
             deleteTodoProps={this.delTodo}
-            handleEditing={this.handleEditing}
+            //handleEditing={this.handleEditing}
             setUpdate={this.setUpdate}
-            handleUpdatedDone={this.handleUpdatedDone}
+            //onKeyDown={this.onKeyPressed}
           />
         </div>
       </div>
