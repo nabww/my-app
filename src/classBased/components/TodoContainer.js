@@ -11,10 +11,10 @@ class TodoContainer extends React.Component {
   };
 
   handleEditing = () => {
+    console.log("edit mode activated");
     this.setState({
       editing: true,
     });
-    console.log("edit mode activated");
   };
 
   handleChange = (id) => {

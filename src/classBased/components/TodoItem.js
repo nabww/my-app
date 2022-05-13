@@ -1,5 +1,5 @@
 import React from "react";
-import styles from ".././TodoItem.module.css";
+import styles from "../../TodoItem.module.css";
 
 class TodoItem extends React.Component {
   state = {
@@ -32,6 +32,13 @@ class TodoItem extends React.Component {
       editMode.display = "none";
     }
 
+    const completedStyle = {
+      fontStyle: "italic",
+      color: "#595959",
+      opacity: 0.4,
+      textDecoration: "line-through",
+    };
+
     return (
       <li className={styles.item}>
         <div onDoubleClick={this.props.handleEditing} style={this.viewMode}>
@@ -42,7 +49,7 @@ class TodoItem extends React.Component {
             onChange={() => this.props.handleChangeProps(id)}
           />
           <button onClick={() => this.props.deleteTodoProps(id)}>Delete</button>
-          <span style={completed ? this.completedStyle : null}>{title}</span>
+          <span style={completed ? completedStyle : null}>{title}</span>
           <input
             type="text"
             style={this.editMode}

@@ -1,10 +1,10 @@
 import React from "react";
 //import ReactDOM from "react-dom";
-import "./app.css";
+import "./classBased/app.css";
 import * as ReactDOM from "react-dom/client";
 
 //component file
-import TodoContainer from "./components/TodoContainer";
+import TodoContainer from "./classBased/components/TodoContainer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,10 +12,3 @@ root.render(
     <TodoContainer />
   </React.StrictMode>
 );
-
-/*ReactDOM.render(
-  <React.StrictMode>
-    <TodoContainer />
-  </React.StrictMode>,
-  document.getElementById("root")
-);*/
