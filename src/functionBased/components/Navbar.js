@@ -8,7 +8,7 @@ const Navbar = () => {
   const links = [
     {
       id: 1,
-      path: "/",
+      path: "/index",
       text: "Home",
     },
     {
