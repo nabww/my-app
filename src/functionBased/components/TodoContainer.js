@@ -85,7 +85,7 @@ const TodoContainer = () => {
       <Router forceRefresh>
         <Navbar />
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/index">
             <div className="container">
               <div className="inner">
                 <Header />
